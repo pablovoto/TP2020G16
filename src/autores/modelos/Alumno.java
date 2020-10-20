@@ -10,6 +10,7 @@ package autores.modelos;
  * @author pablo
  */
 public class Alumno {
+    private String ejemplo;
     private int dni;
     private String nombres;
     private String apellidos;
