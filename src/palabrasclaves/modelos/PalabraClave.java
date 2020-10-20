@@ -9,28 +9,55 @@ package palabrasclaves.modelos;
  *
  * @author pablo
  */
-public class PalabraClave {
-    private String nombre;
+import java.util.Objects;
 
-    public PalabraClave(String nombre) {
-        this.nombre = nombre;
+public class PalabraClave {
+private String PalabraClave;
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 73 * hash + Objects.hashCode(this.PalabraClave);
+        return hash;
     }
 
     @Override
-    public String toString() {
-        return "PalabraClave{" + "nombre=" + nombre + "}\n";
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final PalabraClave other = (PalabraClave) obj;
+        if (!Objects.equals(this.PalabraClave, other.PalabraClave)) {
+            return false;
+        }
+        return true;
     }
 
-    public String verNombre() {
-        return nombre;
+
+
+    
+    public PalabraClave(String PalabraClave) {
+        this.PalabraClave = PalabraClave;}
+    
+    @Override
+    public String toString(){
+    return "Palabra Clave: "+PalabraClave;}
+    
+    public void mostrar() {
+       System.out.println(this);}    
+    
+    public String verPalabraClave() {
+        return PalabraClave;
     }
 
-    public void asignarNombre(String nombre) {
-        this.nombre = nombre;
+    public void asignarPalabraClave(String PalabraClave) {
+        this.PalabraClave = PalabraClave;
     }
     
-    public void mostrar(){
-        System.out.println("\nDatos de las palabras claves:");
-        System.out.println("\nNombre: "+nombre);
-    }
 }

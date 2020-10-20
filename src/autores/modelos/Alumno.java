@@ -64,17 +64,14 @@ public class Alumno {
 
     @Override
     public String toString() {
-        return "Alumno{" + "dni=" + dni + ", apellidos=" + apellidos + ", nombres=" + nombres + ", clave=" + clave + ", cx=" + cx + "}\n";
+        return "Datos del Alumno:" + "dni=" + dni + ", apellidos=" + apellidos + ", nombres=" + nombres + ", clave=" + clave + ", cx=" + cx ;
     }
 
    
     
     public void mostrar(){
-        System.out.println("\nDatos del Alumno:");
-        System.out.println("\nApellido y Nombre: " + apellidos + "," + nombres);
-        System.out.println("\nCX: " + cx);
-        System.out.println("\nDNI: " + dni);
-        System.out.println("\nClave: "+clave);
+        System.out.println(this);
+
     }
 
     

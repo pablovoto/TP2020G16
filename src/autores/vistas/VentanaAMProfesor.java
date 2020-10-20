@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 package autores.vistas;
-
-import autores.modelos.Profesor;
+import autores.modelos.*;
 import java.awt.Dialog;
 import java.util.ArrayList;
 import javax.swing.JDialog;
@@ -20,6 +19,7 @@ public class VentanaAMProfesor extends JDialog {
     public VentanaAMProfesor(Dialog ventanaPadre) {
         super(ventanaPadre, true);
         initComponents();
+        this.comboCargo.setModel(new ModeloComboCargos());
     }
         
     /**
@@ -31,6 +31,7 @@ public class VentanaAMProfesor extends JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        choice1 = new java.awt.Choice();
         jLabel1 = new javax.swing.JLabel();
         txtApellidos = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -41,7 +42,7 @@ public class VentanaAMProfesor extends JDialog {
         txtDNI = new javax.swing.JTextField();
         passClave = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
-        txtCargo = new javax.swing.JTextField();
+        comboCargo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Profesores");
@@ -72,7 +73,12 @@ public class VentanaAMProfesor extends JDialog {
 
         jLabel6.setText("Clave:");
 
-        txtCargo.setToolTipText("Nombres del profesor");
+        comboCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboCargo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboCargoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -94,7 +100,7 @@ public class VentanaAMProfesor extends JDialog {
                             .addComponent(txtDNI)
                             .addComponent(txtApellidos)
                             .addComponent(passClave)
-                            .addComponent(txtCargo)))
+                            .addComponent(comboCargo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnGuardar)))
@@ -118,7 +124,7 @@ public class VentanaAMProfesor extends JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -137,17 +143,23 @@ public class VentanaAMProfesor extends JDialog {
             dni = Integer.parseInt(this.txtDNI.getText().trim());
         String apellidos = this.txtApellidos.getText().trim();
         String nombres = this.txtNombres.getText().trim();
-        String cargo = this.txtCargo.getText().trim();
+        Cargo cargo = ((ModeloComboCargos)this.comboCargo.getModel()).obtenerCargo();
         String clave = new String(this.passClave.getPassword());
-        Profesor profesor = new Profesor(dni, apellidos, nombres, clave, cargo);
+        Profesor profesor = new Profesor(nombres, apellidos, clave,cargo, dni);
         this.profesores.add(profesor);
         for(Profesor p : this.profesores)
             p.mostrar();
     }//GEN-LAST:event_btnGuardarClic
 
+    private void comboCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCargoActionPerformed
+       
+    }//GEN-LAST:event_comboCargoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
+    private java.awt.Choice choice1;
+    private javax.swing.JComboBox<String> comboCargo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -155,7 +167,6 @@ public class VentanaAMProfesor extends JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPasswordField passClave;
     private javax.swing.JTextField txtApellidos;
-    private javax.swing.JTextField txtCargo;
     private javax.swing.JTextField txtDNI;
     private javax.swing.JTextField txtNombres;
     // End of variables declaration//GEN-END:variables

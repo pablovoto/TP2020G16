@@ -14,6 +14,7 @@ import lugares.modelos.Lugar;
 import lugares.vistas.VentanaALugar;
 import palabrasclaves.modelos.PalabraClave;
 import palabrasclaves.vistas.VentanaAPalabraClave;
+import publicaciones.modelos.Publicacion;
 import tipos.modelos.Tipo;
 import tipos.vistas.VentanaATipo;
 
@@ -23,10 +24,6 @@ import tipos.vistas.VentanaATipo;
  * and open the template in the editor.
  */
 
-/**
- *
- * @author Cristian
- */
 public class ControladorPrincipal {
     public static void main(String[] args) {
 // guardarlos en su correspondiente ArrayList. Luego
@@ -38,6 +35,7 @@ public class ControladorPrincipal {
     ArrayList<PalabraClave> PalabrasClaves =new ArrayList<>(); 
     ArrayList<Tipo> Tipos =new ArrayList<>();
     ArrayList<Grupo> Grupos =new ArrayList<>(); 
+    ArrayList<Publicacion> Publicaciones=new ArrayList<>();
 
     VentanaAMAlumno ventanaAlumno = new VentanaAMAlumno(null); //se instancia la ventana
         ventanaAlumno.setLocationRelativeTo(null); //se centra la ventana

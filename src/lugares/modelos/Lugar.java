@@ -5,32 +5,58 @@
  */
 package lugares.modelos;
 
+import java.util.Objects;
+
 /**
  *
  * @author pablo
  */
 public class Lugar {
-    private String nombre;
+    private String unLugar;
 
-    public Lugar(String nombre) {
-        this.nombre = nombre;
+    public Lugar(String unLugar) {
+        this.unLugar = unLugar;
     }
 
     @Override
     public String toString() {
-        return "Lugar{" + "nombre=" + nombre + "}\n";
-    }
-
-    public String verNombre() {
-        return nombre;
-    }
-
-    public void asginarNombre(String nombre) {
-        this.nombre = nombre;
+        return "Se publicó en"+unLugar;
     }
     
-   public void mostrar(){
-       System.out.println("\nDatos del lugar:");
-       System.out.println("\nNombre: "+nombre);
+    @Override
+    public int hashCode(){
+        int hash=3;
+        hash=19*hash+ Objects.hashCode(this.unLugar);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Lugar other = (Lugar) obj;
+        if (!Objects.equals(this.unLugar, other.unLugar)) {
+            return false;
+        }
+        return true;
+    }
+
+    public String verunLugar() {
+        return unLugar;
+    }
+
+    public void asginarunLugar(String unLugar) {
+        this.unLugar = unLugar;
+    }
+    public void mostrar(){
+       System.out.println(this);
+
    }
 }

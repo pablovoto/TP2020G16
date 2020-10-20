@@ -9,72 +9,80 @@ package autores.modelos;
  *
  * @author pablo
  */
+import java.util.ArrayList;
+import grupos.modelos.*;
 public class Profesor {
-    int dni;
-    String nombres;
-    String apellidos;
-    String clave;
-    String cargo;
-     public int verDni() {
-        return dni;
-    }
+private String nombres;
+private String apellidos;
+private String clave;
+private Cargo cargo;
+private ArrayList<MiembroEnGrupo> MiembroEnGrupo;
+private int dni;
 
-    public void asignarDni(int dni) {
-        this.dni = dni;
-    }
-
-    public String verApellidos() {
-        return apellidos;
-    }
-
-    public void asignarApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
-
-    public String verNombres() {
-        return nombres;
-    }
-
-    public void asignarNombres(String nombres) {
-        this.nombres = nombres;
-    }
-
-    public String getverClave() {
-        return clave;
-    }
-
-    public void asignarClave(String clave) {
-        this.clave = clave;
-    }
-
-    public String verCargo() {
-        return cargo;
-    }
-
-    public void asignarCargo(String cargo) {
-        this.cargo = cargo;
-    }
-    public Profesor(int dni, String apellidos, String nombres, String clave, String cargo) {
-        this.dni = dni;
-        this.apellidos = apellidos;
-        this.nombres = nombres;
-        this.clave = clave;
-        this.cargo = cargo;
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 71 * hash + this.dni;
+        return hash;
     }
 
     @Override
-    public String toString() {
-        return "Profesor{" + "dni=" + dni + ", apellidos=" + apellidos + ", nombres=" + nombres + ", clave=" + clave + ", cargo=" + cargo + "}\n";
-    }
-    
-    
-    public void mostrar(){
-        System.out.println("\nDatos del Profesor:");
-        System.out.println("\nApellido y Nombre: " + apellidos + "," + nombres);
-        System.out.println("\nDNI: " + dni);
-        System.out.println("\nClave: "+clave);
-        System.out.println("\nCargo: "+cargo);
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Profesor other = (Profesor) obj;
+        if (this.dni != other.dni) {
+            return false;
+        }
+        return true;
     }
 
-   
+
+ //Constructores
+    public Profesor(String nombres, String apellidos, String clave, Cargo cargo, int dni) {
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.clave = clave;
+        this.cargo = cargo;
+        this.dni = dni;
+    }
+  //Metodo toString
+    @Override
+    public String toString(){
+    return "Datos del Profesor:\n1."+apellidos+", "+nombres+"\n2.Dni: "+dni+"\n3."+cargo;}
+ //Metodo para mostrar
+    public void mostrar() {
+       System.out.println(this);}
+ //Metodo Get Set
+    public ArrayList<MiembroEnGrupo> verMiembroEnGrupo() {
+        return MiembroEnGrupo;}
+    public void asignarMiembroEnGrupo(ArrayList<MiembroEnGrupo> MiembroEnGrupo) {
+        this.MiembroEnGrupo = MiembroEnGrupo;}
+    public String verNombres() {
+        return nombres;}
+    public void asignarNombres(String nombres) {
+        this.nombres = nombres;}
+    public String verApellidos() {
+        return apellidos;}
+    public void asignarApellidos(String apellidos) {
+        this.apellidos = apellidos;}
+    public String verClave() {
+        return clave;}
+    public void asignarClave(String clave) {
+        this.clave = clave;}
+    public Cargo verCargo() {
+        return cargo;}
+    public void asignarCargo(Cargo cargo) {
+        this.cargo = cargo;}
+    public int verDni() {
+        return dni; }
+    public void asignarDni(int dni) {
+        this.dni = dni;}
 }

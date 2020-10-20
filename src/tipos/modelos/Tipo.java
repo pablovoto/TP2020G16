@@ -5,28 +5,55 @@
  */
 package tipos.modelos;
 
+import java.util.Objects;
+
 /**
  *
  * @author pablo
  */
 public class Tipo {
-    private String nombre;
+    private String Tipo;
 
-    public Tipo(String nombre) {
-        this.nombre = nombre;
+    public Tipo(String Tipo) {
+        this.Tipo = Tipo;
+    }
+    @Override
+    public int hashCode(){
+        int hash=7;
+        hash=79*hash+Objects.hashCode(this.Tipo);
+        return hash;
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Tipo other = (Tipo) obj;
+        if (!Objects.equals(this.Tipo, other.Tipo)) {
+            return false;
+        }
+        return true;
+    }
+    @Override
     public String toString() {
-        return "Tipo{" + "nombre=" + nombre + "}\n";
+        return "Tipo de material:" + Tipo;
     }
 
-    public String verNombre() {
-        return nombre;
+    public String verTipo() {
+        return Tipo;
     }
 
-    public void asignarNombre(String nombre) {
-        this.nombre = nombre;
+    public void asignarTipo(String Tipo) {
+        this.Tipo = Tipo;
     }
-    
+    public void mostrar(){
+        System.out.println(this);
+    }
 }
